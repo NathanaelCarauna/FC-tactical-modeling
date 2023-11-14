@@ -11,5 +11,10 @@
   },
   "scripts": {
     "test": "jest"
+  },
+  "dependencies": {
+    "@babel/preset-env": "^7.23.3",
+    "babel-jest": "^29.7.0",
+    "ts-jest": "^29.1.1"
   }
 }
