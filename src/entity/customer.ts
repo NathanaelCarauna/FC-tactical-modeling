@@ -4,7 +4,7 @@
 import Address from "./address";
 
 //Devemos separar o que é complexidade de negócio e complexidade acidental
-class Customer {
+export default class Customer {
     private _id: string;
     private _name: string;
     private _address!: Address;
