@@ -1,12 +1,12 @@
 import OrderItem from "./order_item";
 
-export default class Order{
+export default class Order {
     private _id: string;
     private _custumerId: string;
     private _items: OrderItem[];
     private _total: number;
 
-    constructor(id: string, custumerId: string, items: OrderItem[]){
+    constructor(id: string, custumerId: string, items: OrderItem[]) {
         this._id = id;
         this._custumerId = custumerId;
         this._items = items;
@@ -14,17 +14,29 @@ export default class Order{
         this.validate();
     }
 
-    validate(): boolean{
-        if(this._id.length === 0){
+    get id(): string {
+        return this._id;
+    }
+
+    get customerId(): string{
+        return this._custumerId;
+    }
+
+    get items(): OrderItem[]{
+        return this._items;
+    }
+
+    validate(): boolean {
+        if (this._id.length === 0) {
             throw new Error("Id is required");
         }
-        if(this._custumerId.length === 0){
+        if (this._custumerId.length === 0) {
             throw new Error("CustomerId is required");
         }
-        if(this._items.length === 0){
+        if (this._items.length === 0) {
             throw new Error("Items are required");
         }
-        if(this._items.some(item => item.quantity <= 0)){
+        if (this._items.some(item => item.quantity <= 0)) {
             throw new Error("Quantity must be greater than zero");
         }
         return true;
