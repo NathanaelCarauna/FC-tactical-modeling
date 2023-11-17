@@ -1,10 +1,10 @@
 //Value Object: Não tem id, não é único
 //É imutável, não possui métodos para alterar estado
 export default class Address {
-    _street: string = "";
-    _number: number = 0;
-    _zip: string = "";
-    _city: string = "";
+    private _street: string = "";
+    private _number: number = 0;
+    private _zip: string = "";
+    private _city: string = "";
 
     constructor(street: string, number: number, zip: string, city: string) {
         this._street = street;
@@ -15,19 +15,35 @@ export default class Address {
         this.validate()
     }
 
-    validate(){
-        if(this._street.length === 0){
+    get street(): string {
+        return this._street;
+    }
+
+    get number(): number{
+        return this._number;
+    }
+
+    get zipcode(): string{
+        return this._zip;
+    }
+    
+    get city(): string {
+        return this._city;
+    }
+
+    validate() {
+        if (this._street.length === 0) {
             throw new Error("Street is required");
         }
-        if(this._number === 0){
+        if (this._number === 0) {
             throw new Error("Number is required");
         }
-        if(this._city.length === 0){
+        if (this._city.length === 0) {
             throw new Error("City is required");
         }
     }
 
-    toString(){
+    toString() {
         return `${this._street}, ${this._number}, ${this._zip}, ${this._city}`
     }
 }
