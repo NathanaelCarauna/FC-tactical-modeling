@@ -2,9 +2,10 @@
 //Uma entidade sempre deve se autovalidar
 
 import Address from "../value-object/address";
+import CustomerInterface from "./customer.interface";
 
 //Devemos separar o que é complexidade de negócio e complexidade acidental
-export default class Customer {
+export default class Customer implements CustomerInterface {
     private _id: string;
     private _name: string;
     private _address!: Address;
