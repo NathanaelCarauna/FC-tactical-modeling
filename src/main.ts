@@ -1,7 +1,7 @@
-import Address from "./domain/entity/address";
-import Customer from "./domain/entity/customer";
-import Order from "./domain/entity/order";
-import OrderItem from "./domain/entity/order_item";
+import Address from "./domain/custumer/value-object/address";
+import Customer from "./domain/custumer/entity/customer";
+import Order from "./domain/checkout/entity/order";
+import OrderItem from "./domain/checkout/entity/order_item";
 
 // A relação entre objetos de diferentes agregados se dá por id
 // A relação entre objetos pertencentes ao mesmo agregado se dá pelo próprio objeto

@@ -1,7 +1,7 @@
 //Entidade anêmica, apenas armazena dados. Usada normalmente para ORMs
 //Uma entidade sempre deve se autovalidar
 
-import Address from "./address";
+import Address from "../value-object/address";
 
 //Devemos separar o que é complexidade de negócio e complexidade acidental
 export default class Customer {
