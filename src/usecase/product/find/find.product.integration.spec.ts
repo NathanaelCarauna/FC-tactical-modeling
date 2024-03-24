@@ -13,7 +13,7 @@ describe("Unit test for finding a product", () => {
     beforeEach(async () => {
         sequelize = new Sequelize({
             dialect: 'sqlite',
-            storage: ':memory',
+            storage: ':memory:',
             logging: false,
             sync: {force: true},
         });
