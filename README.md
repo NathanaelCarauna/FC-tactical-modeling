@@ -1,4 +1,4 @@
-# Project Title: DDD and Tactical Modeling Training with TypeScript
+# Project Title: DDD, Tactical Modeling and Clean Architecture with TypeScript
 
 ## Description
 
