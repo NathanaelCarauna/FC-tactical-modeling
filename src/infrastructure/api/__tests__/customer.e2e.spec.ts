@@ -4,7 +4,7 @@ import request from "supertest";
 describe("E2E test for customer", () => {
 
     beforeEach(async () => {
-        await sequelize.sync({force: true});
+        await sequelize.sync({ force: true });
     })
 
     afterAll(async () => {
@@ -73,6 +73,28 @@ describe("E2E test for customer", () => {
         const customer2 = listResponse.body.customers[1];
         expect(customer2.name).toBe("John");
         expect(customer2.address.street).toBe("Street 2");
-        
+
+        const listResponseXml = await request(app)
+            .get("/customer")
+            .set("Accept", "application/xml")
+            .send();
+
+        expect(listResponseXml.status).toBe(200)
+        expect(listResponseXml.text).toContain(`<?xml version="1.0" encoding="UTF-8"?>`);
+        expect(listResponseXml.text).toContain(`<customers>`);
+        expect(listResponseXml.text).toContain(`<customer>`);
+        expect(listResponseXml.text).toContain(`<name>John</name>`);
+        expect(listResponseXml.text).toContain(`<name>Jane</name>`);
+        expect(listResponseXml.text).toContain(`<address>`);
+        expect(listResponseXml.text).toContain(`<street>Street</street>`);
+        expect(listResponseXml.text).toContain(`<street>Street 2</street>`);
+        expect(listResponseXml.text).toContain(`<city>City</city>`);
+        expect(listResponseXml.text).toContain(`<city>City2</city>`);
+        expect(listResponseXml.text).toContain(`<number>123</number>`);
+        expect(listResponseXml.text).toContain(`<number>1234</number>`);
+        expect(listResponseXml.text).toContain(`<zip>12345</zip>`);
+        expect(listResponseXml.text).toContain(`<zip>12344</zip>`);
+        expect(listResponseXml.text).toContain(`</address>`);
+        expect(listResponseXml.text).toContain(`</customer>`);
     })
 });
